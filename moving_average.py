@@ -16,7 +16,12 @@ def get_moving_average(input:list, window_size: int) -> list:
     print(f"moving_average_list:{moving_average_list}")
     return moving_average_list
  
-          
-
+# Same function using list comprehension and lambda          
+def get_moving_average(input:list, window_size: int) -> list:
+    lists_with_window_size = [input[i: i+window_size] for i in range(len(input)) if i <= (len(input)-window_size)]
+    print(f"lists_with_window_size: {lists_with_window_size}")
+    moving_average_list = list(map(lambda x:sum(x)/window_size, lists_with_window_size))
+    print(f"moving_average_list: {moving_average_list}")
+    return moving_average_list
 
 moving_average_list = get_moving_average(input, size)
